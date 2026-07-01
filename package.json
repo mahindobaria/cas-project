@@ -1,0 +1,13 @@
+{
+  "name": "plastic-free-rajkot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plastic-Free Rajkot community service website with a shared Netlify pledge counter.",
+  "scripts": {
+    "build": "echo \"No build step needed\"",
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/blobs": "latest"
+  }
+}

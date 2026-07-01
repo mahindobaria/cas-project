@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plastic-Free Rajkot | Community Service Project</title>
+  <style>
+    :root {
+      --green: #147a4f;
+      --light-green: #e8f7ef;
+      --mint: #bfe8d1;
+      --blue: #1b6ca8;
+      --yellow: #ffc857;
+      --orange: #f26b38;
+      --dark: #14342b;
+      --text: #263238;
+      --muted: #607d8b;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(20, 52, 43, 0.14);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: #fbfffc;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(20, 122, 79, 0.12);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -0.4px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), #20b573);
+      color: white;
+      font-size: 23px;
+      box-shadow: 0 8px 22px rgba(20, 122, 79, 0.28);
+    }
+
+    .links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-weight: 700;
+      color: #31544b;
+      font-size: 14px;
+    }
+
+    .links a { opacity: .86; }
+    .links a:hover { color: var(--green); opacity: 1; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 20px;
+      background: var(--green);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(20, 122, 79, 0.25);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #0f6541;
+      box-shadow: 0 16px 32px rgba(20, 122, 79, 0.32);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--green);
+      border: 2px solid rgba(20, 122, 79, .18);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 5%, rgba(255, 200, 87, .32), transparent 30%),
+        radial-gradient(circle at 90% 16%, rgba(31, 181, 115, .18), transparent 34%),
+        linear-gradient(135deg, #f0fff6 0%, #ffffff 50%, #e8f7ff 100%);
+      padding: 88px 22px 70px;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(20, 122, 79, .1);
+      color: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    h1, h2, h3 { line-height: 1.12; color: var(--dark); }
+
+    h1 {
+      margin: 20px 0 18px;
+      font-size: clamp(42px, 6vw, 74px);
+      letter-spacing: -2.5px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #41645a;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 660px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(20,122,79,.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 25px;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 7px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .circle-bg {
+      position: absolute;
+      inset: 22px 8px 0 30px;
+      border-radius: 42px;
+      background: linear-gradient(145deg, var(--green), #2fbc7b);
+      transform: rotate(2deg);
+      box-shadow: var(--shadow);
+    }
+
+    .illustration-card {
+      position: relative;
+      z-index: 2;
+      margin: 30px auto;
+      max-width: 440px;
+      background: white;
+      border-radius: 32px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.55);
+    }
+
+    .map-tag {
+      position: absolute;
+      z-index: 4;
+      right: -8px;
+      top: 52px;
+      background: var(--yellow);
+      color: #4b3500;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-weight: 900;
+      box-shadow: 0 14px 26px rgba(129, 84, 0, .16);
+    }
+
+    .waste-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .waste-item {
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 138px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .waste-item:nth-child(1) { background: #e8f7ef; }
+    .waste-item:nth-child(2) { background: #e9f4ff; }
+    .waste-item:nth-child(3) { background: #fff5d9; }
+    .waste-item:nth-child(4) { background: #ffece5; }
+
+    .icon { font-size: 42px; }
+
+    section { padding: 82px 22px; }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-head {
+      max-width: 800px;
+      margin-bottom: 36px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -1.6px;
+      margin: 12px 0 14px;
+    }
+
+    .section-head p, .lead {
+      color: #526d66;
+      font-size: 18px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid rgba(20, 122, 79, .12);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 14px 35px rgba(20, 52, 43, .07);
+    }
+
+    .panel.green {
+      background: linear-gradient(145deg, #147a4f, #1cad70);
+      color: white;
+      border: none;
+    }
+
+    .panel.green h3, .panel.green p { color: white; }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--light-green);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .timeline-item h3 { margin: 0 0 4px; font-size: 20px; }
+    .timeline-item p { margin: 0; color: #5d746e; }
+
+    .impact-strip {
+      background: var(--dark);
+      color: white;
+      padding: 56px 22px;
+    }
+
+    .impact-strip .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .impact-box {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .impact-box h3 { color: white; margin-top: 0; }
+    .impact-box p { color: rgba(255,255,255,.78); margin-bottom: 0; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      background: white;
+      border-radius: 24px;
+      padding: 28px 24px 24px 88px;
+      border: 1px solid rgba(20, 122, 79, .13);
+      box-shadow: 0 12px 30px rgba(20, 52, 43, .06);
+      min-height: 190px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 24px;
+      top: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .step h3 { margin: 0 0 8px; font-size: 22px; }
+    .step p { margin: 0; color: #5d746e; }
+
+    .warning {
+      margin-top: 24px;
+      padding: 18px 22px;
+      border-radius: 20px;
+      background: #fff6de;
+      border: 1px solid rgba(255, 200, 87, .55);
+      color: #664812;
+      font-weight: 700;
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .idea {
+      background: white;
+      border-radius: 24px;
+      padding: 25px;
+      border: 1px solid rgba(20,122,79,.12);
+      box-shadow: 0 12px 30px rgba(20, 52, 43, .06);
+    }
+
+    .idea .mini-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--light-green);
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .idea h3 { margin: 0 0 8px; }
+    .idea p { color: #5d746e; margin-bottom: 0; }
+
+    .pledge {
+      background:
+        linear-gradient(rgba(20, 52, 43, .88), rgba(20, 52, 43, .88)),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.2), transparent 40%);
+      color: white;
+      border-radius: 34px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 28px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .pledge h2, .pledge p { color: white; }
+    .pledge p { opacity: .84; }
+
+    .checklist {
+      background: white;
+      color: var(--text);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid #eef5f1;
+      font-weight: 700;
+    }
+
+    .checklist label:last-child { border-bottom: 0; }
+    .checklist input { margin-top: 5px; accent-color: var(--green); }
+
+    .pledge-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0 22px;
+      padding: 14px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      font-weight: 900;
+    }
+
+    .pledge-counter strong {
+      font-size: 32px;
+      line-height: 1;
+      color: var(--yellow);
+    }
+
+    .pledge-form {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .pledge-form input[type="text"] {
+      width: 100%;
+      border: 1px solid #dfece6;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    .pledge-form input[type="text"]:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(20,122,79,.1);
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: #607d8b;
+      margin: 8px 0 0;
+      font-weight: 700;
+    }
+
+    footer {
+      background: #0c251f;
+      color: rgba(255,255,255,.82);
+      padding: 36px 22px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-brand { font-weight: 900; color: white; }
+
+    .floating-note {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      background: white;
+      color: var(--dark);
+      border: 1px solid rgba(20,122,79,.16);
+      border-radius: 18px;
+      padding: 13px 16px;
+      box-shadow: var(--shadow);
+      font-weight: 800;
+      max-width: 260px;
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner, .about-grid, .pledge { grid-template-columns: 1fr; }
+      .hero-visual { min-height: auto; }
+      .circle-bg { display: none; }
+      .impact-strip .container, .ideas-grid, .steps { grid-template-columns: 1fr; }
+      .links { display: none; }
+      .stats { grid-template-columns: 1fr; }
+      .step { padding-left: 24px; padding-top: 88px; }
+    }
+
+    @media print {
+      .nav, .floating-note { display: none; }
+      body { background: white; }
+      section, .hero { padding: 35px 20px; }
+      .panel, .idea, .step { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Plastic-Free Rajkot home">
+        <span class="logo">♻</span>
+        <span>Plastic-Free Rajkot</span>
+      </a>
+      <div class="links" aria-label="Website navigation">
+        <a href="#project">Project</a>
+        <a href="#guide">Home Recycling</a>
+        <a href="#reduce">Reduce Waste</a>
+        <a href="#pledge">Pledge</a>
+      </div>
+      <a class="btn" href="#pledge">Join the Mission</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">Weekend clean-ups • Local action • Real change</span>
+        <h1>One Rajkot. Less plastic. Cleaner streets.</h1>
+        <p>
+          Our community service group visits different localities in Rajkot every weekend to collect plastic waste, speak with residents, and turn discarded plastic into useful recycled items at home. Every bottle picked up and every habit changed brings our city closer to a cleaner future.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#project">See Our Project</a>
+          <a class="btn secondary" href="#guide">Learn to Recycle at Home</a>
+        </div>
+        <div class="stats" aria-label="Project highlights">
+          <div class="stat-card"><strong>Every Weekend</strong><span>Locality visits across Rajkot</span></div>
+          <div class="stat-card"><strong>3 Actions</strong><span>Collect, educate, recycle</span></div>
+          <div class="stat-card"><strong>1 Goal</strong><span>A cleaner plastic-conscious city</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="circle-bg"></div>
+        <div class="map-tag">Rajkot, Gujarat 📍</div>
+        <div class="illustration-card">
+          <svg viewBox="0 0 500 260" width="100%" height="auto" role="img" aria-label="Illustration of volunteers collecting plastic waste">
+            <defs>
+              <linearGradient id="sky" x1="0" x2="1">
+                <stop offset="0" stop-color="#e8f7ff"/>
+                <stop offset="1" stop-color="#e8f7ef"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="500" height="260" rx="26" fill="url(#sky)"/>
+            <circle cx="420" cy="58" r="28" fill="#ffc857"/>
+            <rect x="35" y="150" width="430" height="28" rx="14" fill="#c8e6d5"/>
+            <rect x="70" y="95" width="58" height="80" rx="8" fill="#fff" stroke="#147a4f" stroke-width="4"/>
+            <rect x="84" y="76" width="30" height="26" rx="5" fill="#147a4f"/>
+            <circle cx="99" cy="55" r="22" fill="#f6b58a"/>
+            <path d="M67 182c18 18 55 18 70 0" stroke="#147a4f" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <rect x="205" y="100" width="62" height="75" rx="8" fill="#fff" stroke="#1b6ca8" stroke-width="4"/>
+            <rect x="219" y="80" width="34" height="25" rx="5" fill="#1b6ca8"/>
+            <circle cx="236" cy="59" r="22" fill="#d48a55"/>
+            <path d="M198 184c17 15 56 15 75 0" stroke="#1b6ca8" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <rect x="330" y="105" width="58" height="70" rx="8" fill="#fff" stroke="#f26b38" stroke-width="4"/>
+            <rect x="343" y="86" width="32" height="24" rx="5" fill="#f26b38"/>
+            <circle cx="359" cy="65" r="21" fill="#f2a77a"/>
+            <path d="M323 184c18 15 56 15 73 0" stroke="#f26b38" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <path d="M122 206h245" stroke="#14342b" stroke-width="8" stroke-linecap="round" opacity=".18"/>
+            <path d="M160 207c10-32 38-43 65-25 24-24 56-18 74 10" fill="none" stroke="#147a4f" stroke-width="7" stroke-linecap="round"/>
+            <rect x="172" y="196" width="36" height="22" rx="5" fill="#1b6ca8"/>
+            <rect x="252" y="198" width="45" height="20" rx="5" fill="#ffc857"/>
+            <path d="M395 192l20 23h-40z" fill="#f26b38"/>
+          </svg>
+          <div class="waste-grid">
+            <div class="waste-item"><span class="icon">🥤</span><span>Plastic bottles</span></div>
+            <div class="waste-item"><span class="icon">🛍️</span><span>Carry bags</span></div>
+            <div class="waste-item"><span class="icon">📦</span><span>Packaging</span></div>
+            <div class="waste-item"><span class="icon">🧴</span><span>Containers</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="project">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">About the project</span>
+        <h2>We do more than collect waste — we change daily habits.</h2>
+        <p>
+          Plastic pollution is not only a cleanliness issue; it affects public spaces, drains, animals, soil, and the pride we feel in our neighbourhoods. Our project brings students and residents together so Rajkot’s localities become cleaner from the inside out.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel">
+          <h3>How our weekend visits work</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="num">1</div>
+              <div><h3>Select a locality</h3><p>Each weekend, we choose a different area of Rajkot and identify streets, open spaces, and common litter spots where plastic waste collects.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="num">2</div>
+              <div><h3>Collect and sort plastic</h3><p>We safely collect bottles, wrappers, carry bags, caps, packaging, and containers, then separate them by type and condition.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="num">3</div>
+              <div><h3>Talk to residents</h3><p>We explain why littering harms the locality and share simple alternatives such as cloth bags, refill bottles, and better segregation.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="num">4</div>
+              <div><h3>Reuse creatively</h3><p>Clean plastic is recycled at home into planters, organizers, eco-bricks, decorations, and other useful objects.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel green">
+          <h3>Our message to Rajkot</h3>
+          <p class="lead">
+            A clean city is not created by one group in one day. It is created when every person refuses unnecessary plastic, disposes of waste responsibly, and inspires one more person to do the same.
+          </p>
+          <p>
+            Our project is persuasive because it is practical: instead of only saying “do not litter,” we show people what discarded plastic can become. A bottle can become a planter. A wrapper can become part of an eco-brick. A household can become a zero-litter example for the street.
+          </p>
+          <a class="btn secondary" href="#pledge" style="margin-top:10px;">Take the Clean Rajkot Pledge</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="impact-strip">
+    <div class="container">
+      <div class="impact-box">
+        <h3>Cleaner localities</h3>
+        <p>Regular weekend efforts remove visible litter and make public areas safer, more pleasant, and more welcoming.</p>
+      </div>
+      <div class="impact-box">
+        <h3>Responsible citizens</h3>
+        <p>Awareness conversations encourage residents to separate waste, reduce single-use plastic, and protect their own streets.</p>
+      </div>
+      <div class="impact-box">
+        <h3>Creative recycling</h3>
+        <p>Waste becomes a resource when it is cleaned, sorted, and transformed into useful items instead of being thrown away.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="guide">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Step-by-step guide</span>
+        <h2>How to recycle collected plastic waste at home</h2>
+        <p>Follow this safe and simple process to turn suitable plastic waste into useful home items. Always work with clean plastic and adult supervision when cutting or using heat.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Sort the plastic</h3>
+          <p>Separate bottles, caps, containers, wrappers, and bags. Keep recyclable-looking plastic apart from dirty, sharp, medical, or hazardous waste. Avoid unknown chemical containers.</p>
+        </div>
+        <div class="step">
+          <h3>Wash and dry completely</h3>
+          <p>Rinse with soap and water to remove food, smell, and dirt. Dry in sunlight so the plastic does not grow mold and is easier to reuse.</p>
+        </div>
+        <div class="step">
+          <h3>Choose a useful project</h3>
+          <p>Pick an item based on the plastic type: bottles can become planters, caps can become art, containers can become organizers, and soft plastic can be packed into eco-bricks.</p>
+        </div>
+        <div class="step">
+          <h3>Cut, shape, and smooth edges</h3>
+          <p>Use scissors or a cutter carefully. Smooth sharp edges with tape, sandpaper, or folded cloth. Do not burn plastic, as fumes can be harmful.</p>
+        </div>
+        <div class="step">
+          <h3>Create the recycled item</h3>
+          <p>Decorate with paint, fabric, jute string, labels, or natural materials. Try bottle planters, pen stands, storage boxes, bird feeders, seedling pots, or wall decorations.</p>
+        </div>
+        <div class="step">
+          <h3>Use, gift, or display it</h3>
+          <p>Place recycled items at home, school, or community spaces. Add a small label explaining what waste was used so others feel inspired to recycle too.</p>
+        </div>
+      </div>
+
+      <div class="warning">
+        Safety note: Do not melt or burn plastic at home. Avoid recycling medical waste, pesticide containers, chemical bottles, or heavily contaminated plastic. If an item cannot be safely reused, send it to an authorized waste collector or recycling channel.
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--light-green);" id="reduce">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Individual strategies</span>
+        <h2>How every person in Rajkot can reduce plastic waste</h2>
+        <p>Small personal choices become powerful when an entire locality practices them together. Start with these realistic habits.</p>
+      </div>
+
+      <div class="ideas-grid">
+        <div class="idea"><div class="mini-icon">🛍️</div><h3>Carry a cloth bag</h3><p>Keep one bag in your school bag, scooter, car, or near the door so you never need a plastic carry bag while shopping.</p></div>
+        <div class="idea"><div class="mini-icon">💧</div><h3>Use a refill bottle</h3><p>Carry a reusable water bottle and avoid buying single-use plastic bottles during tuition, travel, sports, or shopping.</p></div>
+        <div class="idea"><div class="mini-icon">🥡</div><h3>Say no to extra packaging</h3><p>Choose loose items where possible and politely refuse unnecessary straws, spoons, cups, and plastic wrappers.</p></div>
+        <div class="idea"><div class="mini-icon">🗑️</div><h3>Segregate at home</h3><p>Use separate bins for dry waste and wet waste. Clean dry plastic has a much better chance of being recycled.</p></div>
+        <div class="idea"><div class="mini-icon">🏪</div><h3>Support responsible shops</h3><p>Encourage local vendors to use paper, cloth, reusable containers, or returnable packaging instead of thin plastic bags.</p></div>
+        <div class="idea"><div class="mini-icon">👥</div><h3>Influence one more person</h3><p>Share the message with family, neighbours, classmates, and shopkeepers. A locality changes faster when people remind each other kindly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pledge">
+    <div class="container">
+      <div class="pledge">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,.12); color:#fff;">Take action today</span>
+          <h2>Make the Clean Rajkot Pledge</h2>
+          <p>
+            I pledge to reduce single-use plastic, never litter, separate my household waste, reuse what I can, and encourage my locality to keep Rajkot clean.
+          </p>
+          <div class="pledge-counter" aria-live="polite">
+            <span>Total pledges taken:</span>
+            <strong id="pledgeCount">...</strong>
+          </div>
+          <p style="font-size:14px; opacity:.78; margin-top:0;">
+            This counter is saved online, so every visitor sees the same latest total. Whenever anyone takes the pledge, it is added to the overall count from all previous pledges.
+          </p>
+        </div>
+        <div class="checklist" aria-label="Plastic reduction checklist">
+          <label><input type="checkbox" class="pledge-check" /> I will carry a cloth bag while shopping.</label>
+          <label><input type="checkbox" class="pledge-check" /> I will use a refillable water bottle.</label>
+          <label><input type="checkbox" class="pledge-check" /> I will separate dry and wet waste at home.</label>
+          <label><input type="checkbox" class="pledge-check" /> I will not throw plastic on roads or open spaces.</label>
+          <label><input type="checkbox" class="pledge-check" /> I will teach at least one person to reduce plastic.</label>
+
+          <form class="pledge-form" id="pledgeForm">
+            <input type="text" name="name" id="pledgeName" placeholder="Your name optional" />
+            <input type="text" name="locality" id="pledgeLocality" placeholder="Your Rajkot locality optional" />
+            <button class="btn" type="submit" id="pledgeButton">Take the Pledge</button>
+            <p class="form-note" id="pledgeStatus">The shared counter works after this project is deployed on Netlify.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>
+        <div class="footer-brand">Plastic-Free Rajkot Community Service Project</div>
+        <div>Collect • Educate • Recycle • Inspire</div>
+      </div>
+      <div>Made for a cleaner, greener Rajkot.</div>
+    </div>
+  </footer>
+
+  <div class="floating-note" id="note">Great! Every checked habit is one step toward a cleaner Rajkot. ♻️</div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('.pledge-check');
+    const note = document.getElementById('note');
+    const pledgeForm = document.getElementById('pledgeForm');
+    const pledgeCount = document.getElementById('pledgeCount');
+    const pledgeName = document.getElementById('pledgeName');
+    const pledgeLocality = document.getElementById('pledgeLocality');
+    const pledgeButton = document.getElementById('pledgeButton');
+    const pledgeStatus = document.getElementById('pledgeStatus');
+    const API_URL = '/.netlify/functions/pledge';
+    let timer;
+
+    function showNote(message) {
+      note.textContent = message;
+      note.style.display = 'block';
+      clearTimeout(timer);
+      timer = setTimeout(() => note.style.display = 'none', 3600);
+    }
+
+    function setStatus(message) {
+      pledgeStatus.textContent = message;
+    }
+
+    async function loadPledgeCount() {
+      try {
+        const response = await fetch(API_URL, { method: 'GET' });
+        if (!response.ok) throw new Error('Could not load pledge count');
+        const data = await response.json();
+        pledgeCount.textContent = data.count;
+        setStatus('Shared pledge counter connected successfully.');
+      } catch (error) {
+        pledgeCount.textContent = '—';
+        setStatus('Shared counter will work after publishing the full project on Netlify.');
+      }
+    }
+
+    checkboxes.forEach(box => {
+      box.addEventListener('change', () => {
+        showNote('Great! Every checked habit is one step toward a cleaner Rajkot. ♻️');
+      });
+    });
+
+    pledgeForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      pledgeButton.disabled = true;
+      pledgeButton.textContent = 'Recording...';
+      setStatus('Saving your pledge to the shared total...');
+
+      const name = pledgeName.value.trim() || 'Anonymous visitor';
+      const locality = pledgeLocality.value.trim() || 'Not provided';
+      const selectedPledges = Array.from(checkboxes)
+        .filter(box => box.checked)
+        .map(box => box.parentElement.textContent.trim());
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, locality, pledges: selectedPledges })
+        });
+        if (!response.ok) throw new Error('Pledge could not be saved');
+        const data = await response.json();
+        pledgeCount.textContent = data.count;
+        pledgeButton.textContent = 'Pledge Recorded!';
+        setStatus('Thank you! Your pledge was added to the shared total.');
+        showNote('Thank you! Your pledge is now included in the shared total.');
+        pledgeForm.reset();
+      } catch (error) {
+        pledgeButton.textContent = 'Try Again';
+        setStatus('Sorry, the pledge could not be saved. Please make sure the full Netlify project is deployed and try again.');
+        showNote('The pledge could not be saved yet.');
+      } finally {
+        pledgeButton.disabled = false;
+        setTimeout(() => {
+          if (pledgeButton.textContent !== 'Recording...') pledgeButton.textContent = 'Take the Pledge';
+        }, 2600);
+      }
+    });
+
+    loadPledgeCount();
+  </script>
+</body>
+</html>
